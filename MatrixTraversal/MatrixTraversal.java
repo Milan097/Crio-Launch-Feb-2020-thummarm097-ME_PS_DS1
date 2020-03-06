@@ -4,8 +4,10 @@ import java.util.*;
 class MatrixTraversal  {
 
   // complete the below function implementation
-  public Integer valueAtNewPosition(int[][] matrix, int currX, int currY, int dir, int steps) {
-	  return -1;
+  public List<Integer> valueAtNewPosition(int[][] matrix, int currX, int currY, int dir, int steps) {
+    List<Integer> lst = new ArrayList<Integer>();
+
+    return lst;
   }
 
   public static void main(String args[]) {
@@ -25,8 +27,11 @@ class MatrixTraversal  {
     int stepsToMove = scanner.nextInt();
 
     scanner.close();
-    Integer result = new MatrixTraversal().valueAtNewPosition(matrix, currPosX, currPosY, dirToMove, stepsToMove);
-    System.out.printf("%d", result);
+     List<Integer> result = new MatrixTraversal().valueAtNewPosition(matrix, currPosX, currPosY, dirToMove, stepsToMove);
+
+    for (int i = 0; i < result.size(); ++i) {
+      System.out.printf("%d ", result.get(i));
+    }
   }
 }
 
