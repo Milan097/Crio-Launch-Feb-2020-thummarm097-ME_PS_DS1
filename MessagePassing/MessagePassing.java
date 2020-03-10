@@ -21,7 +21,7 @@ class MessagePassing  {
         x = scanner.nextInt();
         y = scanner.nextInt();
         p = scanner.nextInt();
-        matrix[x][y] = p;
+        matrix[x][y] = Math.max(p, matrix[x][y]);
     }
     scanner.close();
     new MessagePassing().messagePassTest(n,s,m,matrix);
