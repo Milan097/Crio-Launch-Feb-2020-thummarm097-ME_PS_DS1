@@ -45,8 +45,20 @@ def filecompare_ignore_whitespace(file1, file2, debug):
     return c1 == c2
 
 def run_command_with_timeout(cmd, timeout_in_seconds):
-    ret = subprocess.call(cmd, shell=True, timeout=timeout_in_seconds)
+    crio_path = os.getenv('PWD')
+    new_path = crio_path
+    if os.getenv("PYTHONPATH"):
+        new_path = new_path + ":" + os.getenv('PYTHONPATH')
+    ret = subprocess.call(cmd, shell=True, timeout=timeout_in_seconds, env= { 'PYTHONPATH' : new_path})
     return ret
+
+def all_inc_directories(path, prefix):
+    all_incs = []
+    for root, directories, filenames in os.walk(path):
+        for directory in directories:
+            if directory == 'cpp':
+                all_incs.append(prefix + os.path.join(root, directory))
+    return all_incs
 
 def run(name_of_the_problem, debug, lang):
     all_test_files = os.listdir(name_of_the_problem + '/tests/')
@@ -55,14 +67,30 @@ def run(name_of_the_problem, debug, lang):
     multiple_solution_possible = os.path.exists(evaluate_file)
 
 
+    all_tests_passed = True
+
+    full_file_name = {
+            'c++' : "{}/{}.cpp".format(name_of_the_problem, name_of_the_problem),
+            'java' : "{}/{}.java".format(name_of_the_problem, name_of_the_problem),
+            'python' : "{}/{}.py".format(name_of_the_problem, name_of_the_problem)
+            }
+
+    assert lang in ['c++', 'java', 'python']
+
+    print(full_file_name[lang])
+    if not os.path.exists(full_file_name[lang]):
+        print('Skipping tests: no file name {} not found'.format(full_file_name[lang]))
+        return True
+
     if multiple_solution_possible:
         print('\n====== Multiple solutions =========\n')
 
-    all_tests_passed = True
-
     ret = 0
+
+    inc_paths = ' '.join(all_inc_directories(os.getenv('PWD') + '/crio', '-I'))
+
     compile_cmds = {
-            'c++' : 'cd {} && g++ -std=c++14 -Wall -Werror {}.cpp -o {}'.format(name_of_the_problem, name_of_the_problem, name_of_the_problem),
+            'c++' : 'cd {} && g++ -std=c++14 -Wall -Werror {} {}.cpp -o {}.out'.format(name_of_the_problem, inc_paths, name_of_the_problem, name_of_the_problem),
             'java': 'cd {} && javac -cp ../crio.jar {}.java'.format(name_of_the_problem, name_of_the_problem)
             }
     if lang in compile_cmds:
@@ -85,9 +113,9 @@ def run(name_of_the_problem, debug, lang):
                 actual_output_file = "actual-{}.txt".format(index)
 
                 run_commands = {
-                    'c++' : 'cd {} && ./{} < tests/{} > {}'.format(name_of_the_problem, name_of_the_problem, file_name, actual_output_file),
+                    'c++' : 'cd {} && ./{}.out < tests/{} > {}'.format(name_of_the_problem, name_of_the_problem, file_name, actual_output_file),
                     'java': 'cd {} && java -cp .:../crio.jar {} < tests/{} > {}'.format(name_of_the_problem, name_of_the_problem, file_name, actual_output_file),
-                    'python': 'cd {} && python {}.py < tests/{} > {}'.format(name_of_the_problem, name_of_the_problem, file_name, actual_output_file)
+                    'python': 'cd {} && python3 {}.py < tests/{} > {}'.format(name_of_the_problem, name_of_the_problem, file_name, actual_output_file)
                 }
                 cmd_to_run = run_commands[lang]
                 try:
@@ -155,6 +183,7 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--debug', help='print expected and actual output', action='store_true')
     parser.add_argument('--problem', help='name of the problem solved')
     parser.add_argument('--lang', help='language used', required=False)
+
     developer = False
     # CRIO_SOLUTION_START_MODULE_L1_PROBLEMS
     # developer = True
@@ -230,4 +259,6 @@ if __name__ == '__main__':
         print('check understanding')
 
 # python3 runner.py --problem Addition --lang java --run
+# python3 runner.py --problem Addition --lang c++ --run
+# python3 runner.py --problem Addition --lang python --run
 # python3 runner.py --problem Addition --lang java --submit
