@@ -5,7 +5,14 @@ import java.lang.*;
 public class LetterCombinationsOfPhoneNumber {
 
     public static String sortString(String inputString) { 
-        char tempArray[] = inputString.toCharArray(); 
+        String temp = "";
+        for(int i=0;i<inputString.length();i++) {
+            if(inputString.charAt(i) == '1' || inputString.charAt(i) == '0') {
+                continue;
+            }
+            temp += inputString.charAt(i);
+        }
+        char tempArray[] = temp.toCharArray(); 
         Arrays.sort(tempArray); 
         return new String(tempArray); 
     }
