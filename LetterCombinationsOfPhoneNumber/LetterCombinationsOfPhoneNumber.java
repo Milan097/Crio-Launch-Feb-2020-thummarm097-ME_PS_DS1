@@ -7,7 +7,7 @@ public class LetterCombinationsOfPhoneNumber {
     public static String sortString(String inputString) { 
         String temp = "";
         for(int i=0;i<inputString.length();i++) {
-            if(inputString.charAt(i) == '1' || inputString.charAt(i) == '0') {
+            if(inputString.charAt(i) == '1' || inputString.charAt(i) == '0' || inputString.charAt(i) == ' ') {
                 continue;
             }
             temp += inputString.charAt(i);
