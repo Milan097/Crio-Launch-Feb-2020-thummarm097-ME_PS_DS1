@@ -55,9 +55,10 @@ public class LetterCombinationsOfPhoneNumber {
                 break;
             index[rightMost]++;
 
-            for(int i=rightMost + 1;i<n;i++) 
+            for(int i=rightMost+1;i<n;i++) 
                 index[i] = 0;
         }
+        Collections.sort(ss);
         return ss;
     }
 
