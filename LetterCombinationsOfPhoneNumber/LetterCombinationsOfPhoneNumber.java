@@ -4,75 +4,60 @@ import java.lang.*;
 
 public class LetterCombinationsOfPhoneNumber {
 
-    public static String sortString(String inputString) { 
-        String temp = "";
-        for(int i=0;i<inputString.length();i++) {
-            if(inputString.charAt(i) == '1' || inputString.charAt(i) == '0' || inputString.charAt(i) == ' ') {
-                continue;
-            }
-            temp += inputString.charAt(i);
-        }
-        char tempArray[] = temp.toCharArray(); 
-        Arrays.sort(tempArray); 
-        return new String(tempArray); 
-    }
-
     // Implement your solution by completing the below function
-    public List<String> letterCombinations(String digits) {
-        List<String> ss = new ArrayList<String>();
-        String sortDigits = sortString(digits);
-        List<String> cList = new ArrayList<String>();
-        for(int i=0;i<sortDigits.length();i++) {
-            if(sortDigits.charAt(i) == '2') 
-                cList.add("abc");
-            else if(sortDigits.charAt(i) == '3') 
-                cList.add("def");
-            else if(sortDigits.charAt(i) == '4') 
-                cList.add("ghi");
-            else if(sortDigits.charAt(i) == '5') 
-                cList.add("jkl");
-            else if(sortDigits.charAt(i) == '6') 
-                cList.add("mno");
-            else if(sortDigits.charAt(i) == '7') 
-                cList.add("pqrs");
-            else if(sortDigits.charAt(i) == '8') 
-                cList.add("tuv");
-            else if(sortDigits.charAt(i) == '9') 
-                cList.add("wxyz");
-            else;
+    public static List<String> getList(char c) {
+        List<String> res = null;
+        switch(c) {
+            case '2':
+                res = Arrays.asList("a","b","c");
+                break;
+            case '3':
+                res = Arrays.asList("d","e","f");
+                break;
+            case '4':
+                res = Arrays.asList("g","h","i");
+                break;
+            case '5':
+                res = Arrays.asList("j","k","l");
+                break;
+            case '6':
+                res = Arrays.asList("m","n","o");
+                break;
+            case '7':
+                res = Arrays.asList("p","q","r","s");
+                break;
+            case '8':
+                res = Arrays.asList("t","u","v");
+                break;
+            case '9':
+                res = Arrays.asList("w","x","y","z");
+                break;
         }
-
-        int n = cList.size();
-        int[] index = new int[n];
-        for(int i=0;i<n;i++)
-            index[i] = 0;
-
-        while(true) {
-            String temp = "";
-            for(int i=0;i<n;i++)
-                temp += cList.get(i).charAt(index[i]);
-            ss.add(temp);
-            
-            int rightMost = n-1;
-            while(rightMost >= 0 && cList.get(rightMost).length() <= (index[rightMost] + 1)){
-                rightMost--;
+        return res;
+    }
+    public static List<String> crossProduct(List<String> a, List<String> b) {
+        List<String> res = new ArrayList<>();
+        for(int i = 0; i < a.size(); i++) {
+            for(int j = 0; j < b.size(); j++) {
+                res.add(a.get(i) + b.get(j));
             }
             
-            if(rightMost < 0)
-                break;
-            index[rightMost]++;
-
-            for(int i=rightMost+1;i<n;i++) 
-                index[i] = 0;
         }
-        Collections.sort(ss);
-        return ss;
+
+        return res;
+    }
+    public static List<String> letterCombinations(String digits) {
+        List<String> res = getList(digits.charAt(0));
+        for (int i = 1; i < digits.length(); i++) {
+            res = crossProduct(res,getList(digits.charAt(i)));
+        }
+        return res;
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String line = in.readLine();
-        List<String> combinations = new LetterCombinationsOfPhoneNumber().letterCombinations(line);
+        List<String> combinations = letterCombinations(line);
         for (String cmbn : combinations)
             System.out.print(cmbn + " ");
     }
