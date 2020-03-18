@@ -6,11 +6,7 @@ class MessagePassing  {
   // Complete the below function implementation
   // Print "Yes" for success and "No" for Failure
   public void messagePassTest(int n, int s, int p, int[][] matrix) {
-    if(s == 0) {
-      System.out.println("No");
-      return;
-    }
-    if(n == 1 ) {
+    if(n == 1 && s >= 1) {
       System.out.println("Yes");
       return;
     }
@@ -19,41 +15,41 @@ class MessagePassing  {
     while (k < m && l < n) { 
       for (i = l; i < n; ++i) {  
         st--;
-        st = Math.max(st,matrix[k][i]);
         if(st <= 0) {
           System.out.println("No");
           return;
         }
+        st = Math.max(st,matrix[k][i]);
       } 
       k++; 
       for (i = k; i < m; ++i) { 
         st--;
-        st = Math.max(st,matrix[i][n-1]);
         if(st <= 0) {
           System.out.println("No");
           return;
         }
+        st = Math.max(st,matrix[i][n-1]);
       } 
       n--; 
       if (k < m) { 
         for (i = n - 1; i >= l; --i) {  
           st--;
-          st = Math.max(st,matrix[m - 1][i]);
           if(st <= 0) {
             System.out.println("No");
             return;
           }
+          st = Math.max(st,matrix[m - 1][i]);  
         } 
         m--; 
       } 
       if (l < n) { 
         for (i = m - 1; i >= k; --i) {  
           st--;
-          st = Math.max(st,matrix[i][l]);
           if(st <= 0) {
             System.out.println("No");
             return;
           }
+          st = Math.max(st,matrix[i][l]); 
         } 
         l++; 
       } 
