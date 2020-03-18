@@ -20,7 +20,7 @@ class StringToIntegerAtoi {
         }
         int ans = 0;
         while(ind < n) {
-            if(str.charAt(ind) == ' ')
+            if(str.charAt(ind) == ' ' || str.charAt(ind) == '\t')
                 ind++;
             else {
                 ans = ans * 10;
