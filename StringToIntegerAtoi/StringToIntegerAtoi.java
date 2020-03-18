@@ -27,9 +27,10 @@ class StringToIntegerAtoi {
             else {
                 ans = ans * 10;
                 ans += (str.charAt(ind) - '0');
+                System.out.println(" " + ans);
                 ind++;
             }
-            System.out.println(" " + ans);
+            
         }
         if(pre == 0)
             return ans;
