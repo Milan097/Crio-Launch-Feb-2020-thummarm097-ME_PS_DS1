@@ -4,17 +4,27 @@ class TrappingRainWater {
 
     // complete the below function implementation
     public int trap(int[] height) {
+        if (height.length < 3) return 0;
+        
+        int i = 0;
+        int j = height.length - 1;
         int res = 0;
-        int n = height.length;
-        for (int i = 0;i < n;i++){
-            int leftMax = 0, rightMax = 0;
-            for (int k = i; k >= 0; k--){
-                leftMax = Math.max(leftMax, height[k]);
+        while (i < j) {
+            int leftHeight = height[i];
+            int rightHeight = height[j];
+            if (leftHeight <= rightHeight) {
+                i++;
+                while (i < j && height[i] <= leftHeight) {
+                    res += leftHeight - height[i];
+                    i++;
+                }
+            } else {
+                j--;
+                while (i < j && height[j] <= rightHeight) {
+                    res += rightHeight - height[j];
+                    j--;
+                }
             }
-            for (int j = i; j < n; j++){
-                rightMax = Math.max(rightMax, height[j]);
-            }
-            res += Math.min(leftMax, rightMax) - height[i];
         }
         return res;
     }
