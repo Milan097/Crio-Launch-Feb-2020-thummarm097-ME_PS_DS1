@@ -3,11 +3,11 @@ import java.util.*;
 
 class NumberOfIslands {
 
-    class GetXAndY {
-        static int[] xAxis = {1,0,-1,0};
-        static int[] yAxis = {0,1,0,-1};
+    static class GetXAndY {
+        static int[] xAxis = { 1, 0, -1, 0 };
+        static int[] yAxis = { 0, 1, 0, -1 };
     }
-    
+
     public void bfs(int i,int j,char arr[][]){
 	    arr[i][j] = '0';
 	    for(int k=0;k<4;k++){
