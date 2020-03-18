@@ -4,7 +4,7 @@ import java.util.*;
 class NumberOfIslands {
 
     public static void bfs(char[][] grid,int curx,int cury) {
-        while(1) {
+        while(true) {
             if(grid[curx][cury+1] == '0' && grid[curx+1][cury] == '0') 
                 return;
             if(grid[curx][cury+1] == '1')
