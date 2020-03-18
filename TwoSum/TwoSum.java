@@ -5,7 +5,6 @@ public class TwoSum {
     // Implement your solution by completing the below function	
     public int[] twoSum(int[] num, int target) {
         int n=num.length;
-        Arrays.sort(num);
         int[] a = new int[2];
         for(int i=0;i<n;i++) {
             for(int j=i+1;j<n;j++) {
