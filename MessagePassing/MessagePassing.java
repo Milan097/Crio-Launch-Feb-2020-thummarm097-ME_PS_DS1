@@ -10,6 +10,10 @@ class MessagePassing  {
       System.out.println("Yes");
       return;
     }
+    if(s == 0) {
+      System.out.println("No");
+      return;
+    }
     int i, k = 0, l = 0, m = n;
     int st = s;
     while (k < m && l < n) { 
