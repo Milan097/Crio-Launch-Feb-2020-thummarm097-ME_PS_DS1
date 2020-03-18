@@ -47,7 +47,7 @@ class NumberOfIslands {
         for(int i=0;i<n;i++) {
             for(int j=0;j<n;j++) {
                 if(grid[i][j] == '1') {
-                    System.out.prinln(cnt+" "+i+" "+j);
+                    System.out.println(cnt+" "+i+" "+j);
                     cnt++;
                     bfs(grid,i,j,n);
                 }
