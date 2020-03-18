@@ -5,17 +5,18 @@ public class ValidParenthesis {
     // Implement your solution by completing the below function
   public boolean isValid(String s) {
     int n = s.length();
+    Stack<Character> ss = new Stack<>();
     int cnt = 0;
     for(int i=0;i<n;i++) {
       if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
-        cnt++;
+        ss.push(s.charAt(i));
       } else {
-        cnt--;
+        char temp = ss.pop();
+        if(temp != s.charAt(i))
+          return false;
       }
-      if(cnt < 0)
-        return false;
     }
-    if(cnt == 0)
+    if(ss.size() == 0)
       return true;
     return false;
   }
