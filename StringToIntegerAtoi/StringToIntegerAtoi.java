@@ -23,6 +23,8 @@ class StringToIntegerAtoi {
             ans += (str.charAt(ind) - '0');
             ind++;
         }
+        if(pre == 0)
+            return ans;
         return ans*pre;
     }
 
