@@ -16,6 +16,7 @@ public class TwoSum {
                 }
             }
         }
+        return a;
     }
 
     public static void main(String[] args) {
