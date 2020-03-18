@@ -22,6 +22,13 @@ class StringToIntegerAtoi {
         while(ind < n) {
             if(str.charAt(ind) == ' ' || str.charAt(ind) == '\t')
                 ind++;
+            else if(str.charAt(0) == '-') {
+                pre = -1;
+                ind++;
+            } else if(str.charAt(0) == '+') {
+                pre = 1;
+                ind++;
+            }
             else {
                 ans = ans * 10;
                 ans += (str.charAt(ind) - '0');
