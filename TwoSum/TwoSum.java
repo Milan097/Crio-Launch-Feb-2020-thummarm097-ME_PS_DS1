@@ -4,21 +4,18 @@ import java.util.*;
 public class TwoSum {
     // Implement your solution by completing the below function	
     public int[] twoSum(int[] num, int target) {
-        int i=0,j=num.length-1;
+        int n=num.length;
         Arrays.sort(num);
         int[] a = new int[2];
-        while(i < j) {
-            if(num[i] + num[j] == target) {
-                a[0] = i;
-                a[1] = j;
-                break;
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n || j!=i;j++) {
+                if(num[i] + num[j] == target) {
+                    a[0] = i;
+                    a[1] = j;
+                    return a;
+                }
             }
-            if(num[i] + num[j] < target) 
-                i++;
-            if(num[i] + num[j] > target)
-                j--;
         }
-        return a;
     }
 
     public static void main(String[] args) {
