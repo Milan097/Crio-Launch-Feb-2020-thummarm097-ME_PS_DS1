@@ -12,8 +12,9 @@ public class ValidParenthesis {
         ss.push(s.charAt(i));
       } else {
         char temp = ss.pop();
+        System.out.println(temp);
         if(temp != s.charAt(i))
-          return true;
+          return false;
       }
     }
     if(ss.size() == 0)
