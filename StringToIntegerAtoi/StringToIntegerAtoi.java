@@ -13,21 +13,21 @@ class StringToIntegerAtoi {
         int ind = 0;
         int ans = 0;
         while(ind < n) {
-            System.out.print(str.charAt(ind));
+            // System.out.print(str.charAt(ind));
             if(str.charAt(ind) == ' ' || str.charAt(ind) == '\t') {
                 ind++;
             }
-            else if(str.charAt(0) == '-') {
+            else if(str.charAt(ind) == '-') {
                 pre = -1;
                 ind++;
-            } else if(str.charAt(0) == '+') {
+            } else if(str.charAt(ind) == '+') {
                 pre = 1;
                 ind++;
             }
             else {
                 ans = ans * 10;
                 ans += (str.charAt(ind) - '0');
-                System.out.println(" " + ans);
+                // System.out.println(" " + ans);
                 ind++;
             }
             
