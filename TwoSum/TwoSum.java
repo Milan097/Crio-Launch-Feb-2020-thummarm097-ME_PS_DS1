@@ -3,7 +3,7 @@ import java.util.*;
 
 public class TwoSum {
     // Implement your solution by completing the below function	
-    public int[] twoSum(int[] nums, int target) {
+    public int[] twoSum(int[] num, int target) {
         int i=0,j=num.length()-1;
         Arrays.sort(nums);
         int[] a = new int[2];
