@@ -6,7 +6,7 @@ class StringToIntegerAtoi {
     public int myAtoi(String str) {
         
         int n = str.length();
-        System.out.println(n);
+        // System.out.println(n);
         if(n == 0)
             return 0;
         int pre = 0;
@@ -21,6 +21,7 @@ class StringToIntegerAtoi {
         }
         int ans = 0;
         while(ind < n) {
+            System.out.println(str.charAt(ind));
             if(str.charAt(ind) == ' ' || str.charAt(ind) == '\t')
                 ind++;
             else if(str.charAt(0) == '-') {
