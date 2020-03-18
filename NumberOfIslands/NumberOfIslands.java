@@ -3,7 +3,7 @@ import java.util.*;
 
 class NumberOfIslands {
 
-    static class GetXAndY {
+    static class GetAxis {
         static int[] xAxis = { 1, 0, -1, 0 };
         static int[] yAxis = { 0, 1, 0, -1 };
     }
@@ -11,8 +11,8 @@ class NumberOfIslands {
     public void bfs(int i,int j,char arr[][]){
 	    arr[i][j] = '0';
 	    for(int k=0;k<4;k++){
-	        int x = i + GetXAndY.xAxis[k];
-	        int y = j + GetXAndY.yAxis[k];
+	        int x = i + GetAxis.xAxis[k];
+	        int y = j + GetAxis.yAxis[k];
 	        
 	        if(x<0 || x>=arr.length || y<0 || y>= arr[0].length)
 	            continue;
