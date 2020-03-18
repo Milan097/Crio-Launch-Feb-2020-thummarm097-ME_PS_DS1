@@ -21,7 +21,7 @@ class StringToIntegerAtoi {
         }
         int ans = 0;
         while(ind < n) {
-            System.out.println(str.charAt(ind));
+            System.out.println(str.charAt(ind) + " " + ans);
             if(str.charAt(ind) == ' ' || str.charAt(ind) == '\t')
                 ind++;
             else if(str.charAt(0) == '-') {
@@ -36,6 +36,7 @@ class StringToIntegerAtoi {
                 ans += (str.charAt(ind) - '0');
                 ind++;
             }
+            
         }
         if(pre == 0)
             return ans;
