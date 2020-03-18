@@ -5,6 +5,8 @@ public class ValidParenthesis {
     // Implement your solution by completing the below function
   public boolean isValid(String s) {
     int n = s.length();
+    if(n == 0)
+      return true;
     Stack<Character> ss = new Stack<>();
     //int cnt = 0;
     for(int i=0;i<n;i++) {
