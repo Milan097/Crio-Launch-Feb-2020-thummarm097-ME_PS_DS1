@@ -4,8 +4,21 @@ import java.util.*;
 public class TwoSum {
     // Implement your solution by completing the below function	
     public int[] twoSum(int[] nums, int target) {
-
-        return new int[0];
+        int i=0,j=num.length()-1;
+        Arrays.sort(nums);
+        int[] a = new int[2];
+        while(i < j) {
+            if(num[i] + num[j] == target) {
+                a[0] = i;
+                a[1] = j;
+                break;
+            }
+            if(num[i] + num[j] < target) 
+                i++;
+            if(num[i] + num[j] > target)
+                j--;
+        }
+        return a;
     }
 
     public static void main(String[] args) {
