@@ -23,10 +23,11 @@ class NumberOfIslands {
 
     // Implement your solution by completing the below function
     public int numIslands(char[][] grid) {
+        if(grid.length == 0) {
+            return 0;
+        }
         int n = grid[0].length;
         int m = grid.length;
-        if(m == 0 || n == 0)
-            return 0; 
         int cnt = 0;
         for(int i=0;i<m;i++) {
             for(int j=0;j<n;j++) {
