@@ -18,42 +18,50 @@ class MessagePassing  {
     int st = s;
     while (k < m && l < n) { 
       for (i = l; i < n; ++i) {  
-        st--;
+        if(st != 0) {
+          st--;
+        }
+        st = Math.max(st,matrix[k][i]);
         if(st <= 0) {
           System.out.println("No");
           return;
         }
-        st = Math.max(st,matrix[k][i]);
       } 
       k++; 
       for (i = k; i < m; ++i) { 
-        st--;
+        if(st != 0) {
+          st--;
+        }
+        st = Math.max(st,matrix[i][n-1]);
         if(st <= 0) {
           System.out.println("No");
           return;
         }
-        st = Math.max(st,matrix[i][n-1]);
       } 
       n--; 
       if (k < m) { 
         for (i = n - 1; i >= l; --i) {  
-          st--;
+          if(st != 0) {
+            st--;
+          }
+          st = Math.max(st,matrix[m - 1][i]);
           if(st <= 0) {
             System.out.println("No");
             return;
-          }
-          st = Math.max(st,matrix[m - 1][i]);  
+          } 
         } 
         m--; 
       } 
       if (l < n) { 
         for (i = m - 1; i >= k; --i) {  
-          st--;
+          if(st != 0) {
+            st--;
+          }
+          st = Math.max(st,matrix[i][l]); 
           if(st <= 0) {
             System.out.println("No");
             return;
           }
-          st = Math.max(st,matrix[i][l]); 
         } 
         l++; 
       } 
