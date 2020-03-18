@@ -14,8 +14,8 @@ class MessagePassing  {
     int st = s;
     while (k < m && l < n) { 
       for (i = l; i < n; ++i) {  
-        st--;
         st = Math.max(st,matrix[k][i]);
+        st--;
         if(st == 0) {
           System.out.println("No");
           return;
@@ -23,8 +23,8 @@ class MessagePassing  {
       } 
       k++; 
       for (i = k; i < m; ++i) { 
-        st--;
         st = Math.max(st,matrix[i][n-1]);
+        st--;
         if(st == 0) {
           System.out.println("No");
           return;
@@ -33,8 +33,8 @@ class MessagePassing  {
       n--; 
       if (k < m) { 
         for (i = n - 1; i >= l; --i) {  
-          st--;
           st = Math.max(st,matrix[m - 1][i]);
+          st--;
           if(st == 0) {
             System.out.println("No");
             return;
@@ -44,8 +44,8 @@ class MessagePassing  {
       } 
       if (l < n) { 
         for (i = m - 1; i >= k; --i) {  
-          st--;
           st = Math.max(st,matrix[i][l]);
+          st--;
           if(st == 0) {
             System.out.println("No");
             return;
