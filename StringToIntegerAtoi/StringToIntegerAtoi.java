@@ -20,9 +20,13 @@ class StringToIntegerAtoi {
         }
         int ans = 0;
         while(ind < n) {
-            ans = ans * 10;
-            ans += (str.charAt(ind) - '0');
-            ind++;
+            if(str.charAt(ind) == ' ')
+                ind++;
+            else {
+                ans = ans * 10;
+                ans += (str.charAt(ind) - '0');
+                ind++;
+            }
         }
         if(pre == 0)
             return ans;
