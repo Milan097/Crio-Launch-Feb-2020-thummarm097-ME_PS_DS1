@@ -6,14 +6,14 @@ public class ValidParenthesis {
   public boolean isValid(String s) {
     int n = s.length();
     Stack<Character> ss = new Stack<>();
-    int cnt = 0;
+    //int cnt = 0;
     for(int i=0;i<n;i++) {
       if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
         ss.push(s.charAt(i));
       } else {
         char temp = ss.pop();
         if(temp != s.charAt(i))
-          return false;
+          return true;
       }
     }
     if(ss.size() == 0)
