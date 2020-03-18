@@ -6,6 +6,10 @@ class MessagePassing  {
   // Complete the below function implementation
   // Print "Yes" for success and "No" for Failure
   public void messagePassTest(int n, int s, int p, int[][] matrix) {
+    if(n == 1) {
+      System.out.println("Yes");
+      return;
+    }
     int i, k = 0, l = 0, m = n;
     int st = s;
     while (k < m && l < n) { 
