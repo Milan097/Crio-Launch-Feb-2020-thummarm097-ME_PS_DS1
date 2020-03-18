@@ -5,6 +5,7 @@ class NumberOfIslands {
 
     public static void bfs(char[][] grid,int x,int y,int n) {
         int curx=x,cury=y;
+        System.out.println(curx + " " + cury);
         if((curx >= n-1) && (cury >= n-1))
             return;
         if(curx >= n-1) {
