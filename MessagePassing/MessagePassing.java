@@ -35,7 +35,7 @@ class MessagePassing  {
         }
         st = Math.max(st,matrix[i][n-1]);
         if(st <= 0) {
-          System.out.println(st + " " + i + " " + n-1);
+          System.out.println(st + " " + i + " " + (n-1));
           System.out.println("No");
           return;
         }
