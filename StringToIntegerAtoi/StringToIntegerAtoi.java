@@ -4,6 +4,7 @@ import java.util.*;
 class StringToIntegerAtoi {
     // Implement your solution by completing the below function
     public int myAtoi(String str) {
+        str.trim();
         int n = str.length();
         if(n == 0)
             return 0;
