@@ -11,10 +11,12 @@ public class ValidParenthesis {
       if(s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {
         ss.push(s.charAt(i));
       } else {
-        char temp = ss.pop();
-        System.out.println(temp);
-        if(temp != s.charAt(i))
+        char t1 = ss.pop();
+        char t2 = s.charAt(i);
+        if((t1 == '(' && t2 == ')') || (t1 == '{' && t2 == '}') || (t1 == '[' && t2 == ']')) {
+        } else {
           return false;
+        }
       }
     }
     if(ss.size() == 0)
