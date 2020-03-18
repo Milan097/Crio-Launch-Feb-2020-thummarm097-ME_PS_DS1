@@ -23,7 +23,7 @@ class MessagePassing  {
         }
         st = Math.max(st,matrix[k][i]);
         if(st <= 0) {
-          System.out.println(st + " " + k + " " + i);
+          System.out.println(st + " " + k + " " + i +" "+ matrix[k][i]);
           System.out.println("No");
           return;
         }
