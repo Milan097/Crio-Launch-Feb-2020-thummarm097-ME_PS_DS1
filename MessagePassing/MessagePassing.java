@@ -23,7 +23,7 @@ class MessagePassing  {
         cnt++; 
         st = Math.max(st,matrix[k][i]);
         if(st <= 0 && cnt != to) {
-          System.out.println(st + " " + k + " " + i + " " + cnt);
+          // System.out.println(st + " " + k + " " + i + " " + cnt);
           System.out.println("No");
           return;
         }
@@ -36,7 +36,7 @@ class MessagePassing  {
         cnt++;
         st = Math.max(st,matrix[i][n-1]);
         if(st <= 0 && cnt != to) {
-          System.out.println(st + " " + i + " " + (n-1));
+          // System.out.println(st + " " + i + " " + (n-1));
           System.out.println("No");
           return;
         }
@@ -50,7 +50,7 @@ class MessagePassing  {
           cnt++;
           st = Math.max(st,matrix[m - 1][i]);
           if(st <= 0 && cnt != to) {
-            System.out.println(st + " " + (m-1) + " " + i);
+            // System.out.println(st + " " + (m-1) + " " + i);
             System.out.println("No");
             return;
           } 
@@ -65,7 +65,7 @@ class MessagePassing  {
           cnt++; 
           st = Math.max(st,matrix[i][l]); 
           if(st <= 0 && cnt != to) {
-            System.out.println(st + " " + i + " " + l);
+            // System.out.println(st + " " + i + " " + l);
             System.out.println("No");
             return;
           }
