@@ -8,7 +8,7 @@ public class TwoSum {
         Arrays.sort(num);
         int[] a = new int[2];
         for(int i=0;i<n;i++) {
-            for(int j=0;j<n || j!=i;j++) {
+            for(int j=i+1;j<n;j++) {
                 if(num[i] + num[j] == target) {
                     a[0] = i;
                     a[1] = j;
