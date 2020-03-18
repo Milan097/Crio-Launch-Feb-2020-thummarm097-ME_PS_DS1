@@ -19,7 +19,8 @@ class MessagePassing  {
     int to = (n*n);
     int cnt = 0;
     while (k < m && l < n) { 
-      for (i = l; i < n; ++i) {  
+      for (i = l; i < n; ++i) { 
+        cnt++; 
         st = Math.max(st,matrix[k][i]);
         if(st <= 0 && cnt != to) {
           System.out.println(st + " " + k + " " + i + " " + cnt);
@@ -29,10 +30,10 @@ class MessagePassing  {
         if(st != 0) {
           st--;
         }
-        cnt++;
       } 
       k++; 
       for (i = k; i < m; ++i) { 
+        cnt++;
         st = Math.max(st,matrix[i][n-1]);
         if(st <= 0 && cnt != to) {
           System.out.println(st + " " + i + " " + (n-1));
@@ -42,11 +43,11 @@ class MessagePassing  {
         if(st != 0) {
           st--;
         }
-        cnt++;
       } 
       n--; 
       if (k < m) { 
         for (i = n - 1; i >= l; --i) {  
+          cnt++;
           st = Math.max(st,matrix[m - 1][i]);
           if(st <= 0 && cnt != to) {
             System.out.println(st + " " + (m-1) + " " + i);
@@ -56,12 +57,12 @@ class MessagePassing  {
           if(st != 0) {
             st--;
           }
-          cnt++;
         } 
         m--; 
       } 
       if (l < n) { 
-        for (i = m - 1; i >= k; --i) {  
+        for (i = m - 1; i >= k; --i) { 
+          cnt++; 
           st = Math.max(st,matrix[i][l]); 
           if(st <= 0 && cnt != to) {
             System.out.println(st + " " + i + " " + l);
@@ -71,7 +72,6 @@ class MessagePassing  {
           if(st != 0) {
             st--;
           }
-          cnt++;
         } 
         l++; 
       } 
