@@ -4,8 +4,26 @@ import java.util.*;
 class StringToIntegerAtoi {
     // Implement your solution by completing the below function
     public int myAtoi(String str) {
-
-        return 0;
+        int n = str.length();
+        if(n == 0)
+            return 0;
+        int pre = 0;
+        int ind = 0;
+        if(str.charAt(0) == '-') {
+            pre = -1;
+            ind = 1;
+        }
+        else if(str.charAt(0) == '+') {
+            pre = 1;
+            ind = 1; 
+        }
+        int ans = 0;
+        while(ind < n) {
+            ans = ans * 10;
+            ans += (str.charAt(ind) - '0');
+            ind++;
+        }
+        return ans*pre;
     }
 
     public static void main(String[] args) {
