@@ -3,23 +3,63 @@ import java.util.*;
 
 class MergeIntervals {
     // Implement your solution by completing the below function
-    public int[][] merge(int[][] intervals) {
-
-        return null;
+    public List<Pair> merge(Pair[] intervals) {
+        
+        Arrays.sort(intervals, new Comparator<Pair>() {
+            public int compare(Pair a, Pair b) {
+                return Integer.compare(a.getStart(), b.getStart());
+            }
+        });
+        List<Pair> pairs = new ArrayList<>();
+        int size = 0;
+        pairs.add(intervals[0]);
+        for(int i = 1;i<intervals.length; i++) {
+            if(intervals[i].getStart() <= pairs.get(size).getEnd() ) {
+                pairs.get(size).setEnd(Math.max(pairs.get(size).getEnd(), intervals[i].getEnd()));
+            } else {
+                pairs.add(intervals[i]);
+                size++;
+            }
+        }
+        return pairs;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        int[][] nums = new int[n][2];
+        Pair[] nums = new Pair[n];
+        int x, y;
         for (int i = 0; i < n; i++) {
-            nums[i][0] = scanner.nextInt();
-            nums[i][1] = scanner.nextInt();
+            x = scanner.nextInt();
+            y = scanner.nextInt();
+            nums[i] = new Pair(x, y);
         }
         scanner.close();
 
-        int[][] results = new MergeIntervals().merge(nums);
-        for (int i = 0; i < results.length; ++i)
-            System.out.println(String.valueOf(results[i][0]) + " " + String.valueOf(results[i][1]));
+        List<Pair> results = new MergeIntervals().merge(nums);
+        for (int i = 0; i < results.size(); ++i)
+            System.out.println(results.get(i).getStart() + " " + results.get(i).getEnd());
+    }
+    
+    private static class Pair {
+        int start;
+        int end;
+
+        public Pair(int s, int e) {
+            start = s;
+            end = e;        
+        }
+
+        public int getStart() {
+            return start;
+        }
+
+        public int getEnd() {
+            return end;
+        }
+
+        public void setEnd(int end) {
+            this.end = end;
+        }    
     }
 }
