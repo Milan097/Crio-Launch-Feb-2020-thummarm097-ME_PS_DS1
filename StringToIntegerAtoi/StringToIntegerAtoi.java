@@ -11,19 +11,12 @@ class StringToIntegerAtoi {
             return 0;
         int pre = 0;
         int ind = 0;
-        if(str.charAt(0) == '-') {
-            pre = -1;
-            ind = 1;
-        }
-        else if(str.charAt(0) == '+') {
-            pre = 1;
-            ind = 1; 
-        }
         int ans = 0;
         while(ind < n) {
             System.out.print(str.charAt(ind));
-            if(str.charAt(ind) == ' ' || str.charAt(ind) == '\t')
+            if(str.charAt(ind) == ' ' || str.charAt(ind) == '\t') {
                 ind++;
+            }
             else if(str.charAt(0) == '-') {
                 pre = -1;
                 ind++;
