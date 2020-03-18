@@ -3,18 +3,18 @@ import java.util.*;
 
 class NumberOfIslands {
 
-    public static void bfs(char[][] grid,int x,int y,int n) {
+    public static void bfs(char[][] grid,int x,int y,int n,int m) {
         int curx=x,cury=y;
         System.out.println(curx + " " + cury);
-        if((curx >= n-1) && (cury >= n-1))
+        if((curx >= m-1) && (cury >= n-1))
             return;
-        if(curx >= n-1) {
-            curx = n-1;
+        if(curx >= m-1) {
+            curx = m-1;
             if(grid[curx][cury + 1] == '0')
                 return;
             if(grid[curx][cury+1] == '1') {
                 grid[curx][cury+1] = '2';
-                bfs(grid,curx,cury+1,n);
+                bfs(grid,curx,cury+1,n,m);
             }
         }
         else if(cury >= n-1) {
@@ -23,7 +23,7 @@ class NumberOfIslands {
                 return;
             if(grid[curx+1][cury] == '1') {
                 grid[curx+1][cury] = '2';
-                bfs(grid,curx+1,cury,n);
+                bfs(grid,curx+1,cury,n,m);
             }
         }
         else {
@@ -31,11 +31,11 @@ class NumberOfIslands {
                 return;
             if(grid[curx][cury+1] == '1') {
                 grid[curx][cury+1] = '2';
-                bfs(grid,curx,cury+1,n);
+                bfs(grid,curx,cury+1,n,m);
             }
             if(grid[curx+1][cury] == '1') {
                 grid[curx+1][cury] = '2'; 
-                bfs(grid,curx+1,cury,n);
+                bfs(grid,curx+1,cury,n,m);
             }
         }
     }
@@ -43,13 +43,14 @@ class NumberOfIslands {
     // Implement your solution by completing the below function
     public int numIslands(char[][] grid) {
         int n = grid[0].length;
+        int m = grid.length;
         int cnt = 0;
-        for(int i=0;i<n;i++) {
+        for(int i=0;i<m;i++) {
             for(int j=0;j<n;j++) {
                 if(grid[i][j] == '1') {
                     System.out.println(cnt+" "+i+" "+j);
                     cnt++;
-                    bfs(grid,i,j,n);
+                    bfs(grid,i,j,n,m);
                 }
             }
         } 
