@@ -4,8 +4,8 @@ import java.util.*;
 public class TwoSum {
     // Implement your solution by completing the below function	
     public int[] twoSum(int[] num, int target) {
-        int i=0,j=num.length()-1;
-        Arrays.sort(nums);
+        int i=0,j=num.length-1;
+        Arrays.sort(num);
         int[] a = new int[2];
         while(i < j) {
             if(num[i] + num[j] == target) {
