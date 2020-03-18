@@ -5,7 +5,7 @@ class NumberOfIslands {
 
     public static void bfs(char[][] grid,int x,int y,int n) {
         int curx=x,cury=y;
-        if(curx >= n-1 && cury >= n-1)
+        if((curx >= n-1) && (cury >= n-1))
             return;
         if(curx >= n-1) {
             curx = n-1;
@@ -13,6 +13,7 @@ class NumberOfIslands {
                 return;
             if(grid[curx][cury+1] == '1')
                 grid[curx][cury+1] = '2';
+            bfs(grid,curx,cury+1,n);
         }
         else if(cury >= n-1) {
             cury = n-1;
@@ -20,6 +21,7 @@ class NumberOfIslands {
                 return;
             if(grid[curx+1][cury] == '1')
                 grid[curx+1][cury] = '2';
+            bfs(grid,curx+1,cury,n);
         }
         else {
             if(grid[curx][cury+1] == '0' && grid[curx+1][cury] == '0') 
